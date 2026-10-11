@@ -31,7 +31,7 @@ def momentum_1d(x_0, alpha, gamma, t_corrupt, delta, strategy, ref_velocities):
         prev_velocity = velocities[-1]
         if t == t_corrupt + 1:
             if strategy == "reset" or strategy == "clean_reset":
-                prev_velocity = gamma * 0 + alpha * gradient
+                prev_velocity = gamma * 0 + alpha * gradients[-1]
             elif strategy == "replace":
                 prev_velocity = ref_velocities[t]
         velocity = gamma * prev_velocity + alpha * gradient
@@ -51,7 +51,7 @@ def momentum_2d(x_0, y_0, alpha, gamma, t_corrupt, delta, strategy, ref_velociti
         prev_velocity = velocities[-1]
         if t == t_corrupt + 1:
             if strategy == "reset" or strategy == "clean_reset":
-                prev_velocity = gamma * 0 + alpha * gradient
+                prev_velocity = gamma * 0 + alpha * gradients[-1]
             elif strategy == "replace":
                 prev_velocity = ref_velocities[t]
         velocity = gamma * prev_velocity + alpha * gradient
